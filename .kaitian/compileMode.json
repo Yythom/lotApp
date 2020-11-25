@@ -1,0 +1,17 @@
+{
+  "current": 0,
+  "modes": [
+    {
+      "title": "index",
+      "page": "pages/index/index"
+    },
+    {
+      "title": "list",
+      "page": "orderlist/orderlist"
+    },
+    {
+      "title": "item",
+      "page": "orderitem/orderitem"
+    }
+  ]
+}

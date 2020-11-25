@@ -1,0 +1,8 @@
+{
+  "pullRefresh": true,
+  "usingComponents": {
+    "search-bar": "mini-ali-ui/es/search-bar/index",
+    "collapse": "mini-ali-ui/es/collapse/index",
+    "collapse-item": "mini-ali-ui/es/collapse/collapse-item/index"
+  }
+}

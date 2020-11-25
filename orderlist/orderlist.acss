@@ -1,0 +1,199 @@
+/* 刷脸支付 */
+
+.order-wrapper {
+  background-color: #fff;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.am-collapse-item-content-wrapper {
+  max-height: 142px
+}
+
+.order-item {
+  display: flex;
+  flex-direction: row;
+  /* border: 1px solid #f40; */
+  align-items: center;
+}
+
+/* 刷脸支付 */
+
+.order-top view {
+  flex-grow: 1;
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  margin-left: 20px;
+}
+
+/* 重置刷新 */
+
+.order-top button {
+  height: 30px;
+  line-height: 30px;
+  width: 62px;
+  margin-right: 10px;
+  font-weight: 400;
+  white-space: nowrap;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* 本月交易金额 */
+
+.order-bottom {
+  justify-content: space-around;
+  /* border: 1px solid #f40; */
+}
+
+.order-pay-title {
+  color: rgba(0, 0, 0, .85);
+  font-size: 14px;
+}
+
+.order-pay-money {
+  height: 37px;
+  line-height: 37px;
+  text-align: center;
+  color: rgba(0, 0, 0, .85);
+  font-size: 14px;
+}
+
+.order-pay-money text {
+  font-size: 24px;
+}
+
+/* 搜索 */
+
+.search-wrapper {
+  background-color: #fff;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  box-sizing: border-box;
+}
+
+.search-item {
+  /* margin: 0 20px; */
+  margin: 0 auto;
+  height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.search-title {
+  font-size: 14px;
+  width: 42px;
+  text-align: center;
+}
+
+.search-item button {
+  height: 30px;
+  width: 210px;
+  font-size: 14px;
+  line-height: 30px;
+  border: 1px solid #1890ff;
+  border-radius: 5px;
+  color: #000;
+  margin-left: 15px;
+}
+
+.search-btn {
+  height: 30px;
+  line-height: 30px;
+  width: 196px;
+  margin-left: 44px
+}
+
+/* 订单 */
+
+.item_wrap {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0.1em 0.5em 0 rgba(92, 92, 92, 0.18);
+  padding: 16px 24px 8px 24px;
+  background-color: #fff;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  margin: 20px;
+  box-sizing: border-box;
+  /* height: 100px; */
+}
+
+/* 开始时间 */
+
+.start-time {
+  width: 94px;
+  border: 1px solid #1890ff;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  font-size: 14px;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+
+.end-time {
+  width: 94px;
+  border: 1px solid #1890ff;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+/* 订单号 */
+
+.commom {
+  height: 20px;
+  margin-bottom: 14px;
+}
+
+.pay_order_id {
+  display: flex;
+}
+
+.pay-number {
+  flex-grow: 1;
+}
+
+.pay-number-title {
+  font-size: 14px;
+  color: #333;
+}
+
+.pay-number-id {
+  font-size: 14px;
+  color: grey;
+}
+
+.pay-status {
+  /* width: 50px; */
+  color: grey;
+  font-size: 14px;
+  text-align: right;
+}
+
+.btn-wrap {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #000;
+}
+
+.btn-wrap button {
+  width: 65px;
+  height: 24px;
+  font-size: 14px;
+  line-height: 24px;
+}

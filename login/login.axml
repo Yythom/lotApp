@@ -1,0 +1,17 @@
+<view class="login_wrap">
+  <view class="logo_box">
+    <view class="logo">
+      <image mode="scaleToFill" src="../assets/logo.png"/>
+    </view>
+    <view class="title">
+    <!-- 鱼付通刷脸 -->
+    </view>
+  </view>
+  <view class="input_box">
+    <input class="i_p" value="{{account}}" placeholder="账号" onInput="bindInput1" name="account" maxlength="18"/>
+    <input class="i_p" value="{{password}}" placeholder="密码" onInput="bindInput2" name="password" password maxlength="18"/>
+  </view>
+  <button type="primary" onTap="login" class="loginBtn" loading={{loginStatus}}>
+登入
+  </button>
+</view>

@@ -1,0 +1,90 @@
+/* 导出返回 */
+.am-modal-show{
+  z-index: 99;
+}
+.wrapper {
+  width: 100vw;
+  /* border: 1px solid #f40; */
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+
+.wrapper-btn {
+  margin: 20px;
+  margin-right: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.wrapper-btn button {
+  width: 74px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  color: #000;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+/* 订单详情 */
+
+.order-detail {
+  margin: 20px;
+  box-shadow: 0 0.1em 0.5em 0 rgba(0, 0, 0, .28);
+}
+
+.order-title {
+  margin: 20px 10px 0 20px;
+  line-height: 26px;
+  height: 30px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #000;
+  font-size: 18px;
+}
+
+.paid-mony {
+  margin-left: 20px;
+  font-size: 14px;
+  color: rgb(37, 155, 36);
+}
+
+.order-content {
+  margin-left: 20px;
+  margin-right: 20px;
+  /* border: 1px solid #f40; */
+  color: rgba(0, 0, 0, .85);
+  font-size: 14px;
+}
+
+.order-content view {
+  min-height: 30px;
+  line-height: 20px;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+}
+
+.order-name {
+  flex: 3;
+  width: 30%;
+}
+
+.order-value {
+  flex: 7;
+  width: 70%;
+}
+
+.order-other {
+  word-wrap: break-word;
+}
+
+.order-border {
+  border-bottom: 1px solid #ccc;
+}
+
+.order-border:last-child {
+  border: none;
+}

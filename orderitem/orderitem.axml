@@ -1,0 +1,99 @@
+<view class="wrapper">
+  <view class="wrapper-btn" a:if="{{order.price!=0&&account.role!=6}}">
+    <button type="primary" a:if="{{order.price!=0}}" style="color:#fff" onTap="onMaskClick">
+       部分退款
+    </button>
+    <button type="primary" onTap="onMaskClickAll" style="color:#fff" a:if="{{order.price!=0}}">
+       全部退款
+    </button>
+    <modal show="{{modalOpened}}" onMaskClick="onMaskClick" buttons="{{buttons}}" onButtonClick="footBotton">
+      <view slot="header">请输入退款的金额</view>
+      <view class="form-row">
+        <view class="form-row-label">金额</view>
+        <view class="form-row-content">
+          <input class="input" type="digit" onInput="inputFn" value="{{moeny}}" placeholder="最大金额{{order.price}}" maxlength="8"/>
+        </view>
+      </view>
+    </modal>
+       <modal show="{{isTuikuan}}" onMaskClick="onMaskClickAll" buttons="{{buttons}}" 
+       onButtonClick="footBottonAll">
+      <view slot="header">确定退款</view>
+    </modal>
+  </view>
+  <!--  订单详情 -->
+  <view class="order-detail">
+    <view class="order-title">
+      <text>订单详情</text>
+      <text class="paid-mony">{{order.order.status_message}}</text>
+    </view>
+    <view class="order-content">
+      <view>
+        <text class="order-name">付款类型</text>
+        <text class="order-value">{{order.pay_order.pay_type==2?'支付宝':'微信'}}</text>
+      </view>
+      <view>
+        <text class="order-name">付款方式</text>
+        <text class="order-value">{{order.pay_order.pay_method_message}}</text>
+      </view>
+      <view>
+        <text class="order-name">退款金额</text>
+        <text class="order-value">{{order.pay_order.price}}</text>
+      </view>
+      <view>
+        <text class="order-name">系统订单号</text>
+        <text class="order-value order-other" data-key='{{order.pay_order.pay_order_id}}' onTap='copy'>
+        {{order.pay_order.pay_order_id}}
+          <image mode="scaleToFill" src="/assets/copy.png" style="width:16px;height:16px;  transform: translate(4px,3px)" />
+        </text>
+      </view>
+      <view>
+        <text class="order-name">交易时间</text>
+        <text class="order-value">{{order.pay_order.create_at}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 付款凭证 pay_order-->
+  <view class="order-detail">
+    <view class="order-title">
+      <text>付款凭证</text>
+    </view>
+    <view class="order-content">
+      <view>
+        <text class="order-name">{{order.pay_order.pay_type==2?'支付宝':'微信'}}扫码支付</text>
+        <text class="order-value">{{order.pay_order.price}}</text>
+      </view>
+      <view>
+        <text class="order-name">{{order.pay_order.pay_type==2?'支付宝':'微信'}}交易号</text>
+        <text class="order-value order-other">{{order.pay_order.trade_no}}</text>
+      </view>
+      <view>
+        <text class="order-name">{{order.pay_order.pay_type==2?'支付宝':'微信'}}商户订单号</text>
+        <text class="order-value order-other">{{order.pay_order.merchant_trade_no}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 退款凭证 -->
+  <view class="order-detail">
+    <view class="order-title">
+      <text>退款凭证</text>
+    </view>
+    <view class="order-content order-border" key="{{item.refund_order_id}}" a:for="{{order.refund.list}}">
+      <view>
+        <text class="order-name">{{item.pay_type_message}}退款</text>
+        <text class="order-value">{{item.price}}</text>
+      </view>
+      <view>
+        <text class="order-name">系统退款单号</text>
+        <text class="order-value order-other">{{item.refund_order_id}}</text>
+      </view>
+      <view>
+        <text class="order-name">{{item.pay_type==2?'支付宝':'微信'}}退款单号</text>
+        <text class="order-value order-other">{{item.trade_no}}</text>
+      </view>
+      <view>
+        <text class="order-name">{{item.pay_type_message}}商户退款单号</text>
+        <text class="order-value order-other">{{item.merchant_trade_no}}</text>
+      </view>
+    </view>
+  </view>
+</view>

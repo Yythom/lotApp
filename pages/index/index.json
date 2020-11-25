@@ -1,0 +1,8 @@
+{
+  "transparentTitle": "always",
+  "titlePenetrate": "YES",
+  "defaultTitle": " ",
+  "usingComponents": {
+    "modal": "mini-ali-ui/es/modal/index"
+  }
+}

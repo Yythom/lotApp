@@ -1,0 +1,11 @@
+{
+  "pages": [
+    "login/login",
+    "pages/index/index",
+    "orderlist/orderlist",
+    "orderitem/orderitem"
+  ],
+  "window": {
+    "defaultTitle": "鱼付通刷脸小程序"
+  }
+}

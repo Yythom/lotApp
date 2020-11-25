@@ -1,0 +1,6 @@
+{
+  "pullRefresh": true,
+  "usingComponents": {
+    "modal": "mini-ali-ui/es/modal/index"
+  }
+}
