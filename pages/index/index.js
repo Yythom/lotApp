@@ -85,7 +85,7 @@ Page({
     let that = this
     // 页面加载完成
     my.request({
-      url: 'http://47.108.151.32:9501/merchant/v1/shop/account/detail',
+      url: 'https://api.fishcashier.com/merchant/v1/shop/account/detail',
       headers: {
         'content-type': 'application/json',
         'token': `${that.data.token}`
@@ -147,7 +147,7 @@ Page({
   upOrder(order_id) {
     let that = this;
     my.request({
-      url: 'http://47.108.151.32:9501/merchant/v1/pay/search',
+      url: 'https://api.fishcashier.com/merchant/v1/pay/search',
       headers: {
         'content-type': 'application/json',
       },
@@ -174,7 +174,7 @@ Page({
   getBanner() {
     let that = this;
     my.request({
-      url: 'http://47.108.151.32:9501/merchant/v1/shop/banner',
+      url: 'https://api.fishcashier.com/merchant/v1/shop/banner',
       headers: {
         'content-type': 'application/json',
         'token': `${that.data.token}`
@@ -223,7 +223,7 @@ Page({
       });
     }
     my.request({
-      url: 'http://47.108.151.32:9501/merchant/v1/login/refreshToken',
+      url: 'https://api.fishcashier.com/merchant/v1/login/refreshToken',
       headers: {
         'content-type': 'application/json'
       },
@@ -379,7 +379,7 @@ Page({
           my.showLoading();
           console.log('res,', res);
           my.request({
-            url: 'http://47.108.151.32:9501/merchant/v1/pay/face',
+            url: 'https://api.fishcashier.com/merchant/v1/pay/face',
             method: 'POST',
             data: {
               price: r.amount,

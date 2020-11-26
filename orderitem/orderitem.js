@@ -46,7 +46,7 @@ Page({
     console.log(price);
 
     my.request({
-      url: 'http://47.108.151.32:9501/merchant/v1/order/order/refund',
+      url: 'https://api.fishcashier.com/merchant/v1/order/order/refund',
       headers: { 'content-type': 'application/json', 'token': `${token}` },
       method: 'POST',
       dataType: 'json',
@@ -86,7 +86,7 @@ Page({
     console.log(that.data.refund_order_id);
 
     my.request({
-      url: 'http://47.108.151.32:9501/merchant/v1/order/order/searchRefund',
+      url: 'https://api.fishcashier.com/merchant/v1/order/order/searchRefund',
       headers: { 'content-type': 'application/json', 'token': `${token}` },
       method: 'POST',
       dataType: 'json',
@@ -172,7 +172,7 @@ Page({
     const that = this;
     let { token } = this.data
     my.request({
-      url: 'http://47.108.151.32:9501/merchant/v1/shop/order/detail',
+      url: 'https://api.fishcashier.com/merchant/v1/shop/order/detail',
       headers: { 'content-type': 'application/json', 'token': `${token}` },
       method: 'POST',
       dataType: 'json',
@@ -217,7 +217,7 @@ Page({
       });
     }
     my.request({
-      url: 'http://47.108.151.32:9501/merchant/v1/login/refreshToken',
+      url: 'https://api.fishcashier.com/merchant/v1/login/refreshToken',
       headers: {
         'content-type': 'application/json'
       },

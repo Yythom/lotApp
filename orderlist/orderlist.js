@@ -17,7 +17,6 @@ Page({
     this.setData({
       flag: !this.data.flag
     })
-    console.log(this.data.flag);
     if (!this.data.flag) {
       setTimeout(() => {
         my.pageScrollTo({
@@ -67,7 +66,7 @@ Page({
     let that = this;
     let { token, page, pageSize, shop_id } = this.data
     my.request({
-      url: 'http://47.108.151.32:9501/merchant/v1/shop/shop/together/code',
+      url: 'https://api.fishcashier.com/merchant/v1/shop/shop/together/code',
       headers: { 'content-type': 'application/json', 'token': `${token}` },
       method: 'POST',
       dataType: 'json',
@@ -114,7 +113,7 @@ Page({
     let that = this;
     let { token, page, pageSize, total, shop_id } = that.data
     my.request({
-      url: 'http://47.108.151.32:9501/merchant/v1/shop/shop/together/list',
+      url: 'https://api.fishcashier.com/merchant/v1/shop/shop/together/list',
       headers: { 'content-type': 'application/json', 'token': `${token}` },
       method: 'POST',
       dataType: 'json',
@@ -306,7 +305,7 @@ Page({
       });
     }
     my.request({
-      url: 'http://47.108.151.32:9501/merchant/v1/login/refreshToken',
+      url: 'https://api.fishcashier.com/merchant/v1/login/refreshToken',
       headers: {
         'content-type': 'application/json'
       },
