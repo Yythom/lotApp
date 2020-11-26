@@ -25,7 +25,6 @@ Page({
         });
       }, 300);
     } else {
-
       my.pageScrollTo({
         scrollTop: 10,
         duration: 400,
