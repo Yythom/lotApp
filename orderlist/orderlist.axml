@@ -10,6 +10,32 @@
     <view class="order-item order-bottom">
       <view class="order-amount">
         <view class="order-pay-title">
+         本日交易金额
+        </view>
+        <view class="order-pay-money">
+          <text>¥</text>{{headerData.today_money}}
+        </view>
+      </view>
+      <view class="order-amount">
+        <view class="order-pay-title">
+         本日交易单数
+        </view>
+        <view class="order-pay-money">
+          <text>{{headerData.today_count}}</text>
+        </view>
+      </view>
+      <view class="order-amount">
+        <view class="order-pay-title"> 
+         最日交易金额
+        </view>
+        <view class="order-pay-money">
+          <text>¥</text>{{headerData.yesterday_money}}
+        </view>
+      </view>
+    </view>
+    <view class="order-item order-bottom">
+      <view class="order-amount">
+        <view class="order-pay-title">
          本月交易金额
         </view>
         <view class="order-pay-money">
@@ -34,8 +60,8 @@
       </view>
     </view>
   </view>
-  <collapse className="demo-collapse" collapseKey="collapse1">
-    <collapse-item header="开始搜索" itemKey="item-11" collapseKey="collapse1">
+  <collapse className="demo-collapse" collapseKey="collapse1" onChange='scrollTo'>
+    <collapse-item header="开始搜索" itemKey="item-11" collapseKey="collapse1"  >
       <view class="item-content">
         <view class="search-wrapper">
           <view class="search-item">
