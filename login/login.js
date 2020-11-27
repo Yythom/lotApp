@@ -29,7 +29,7 @@ Page({
     my.request({
       url: 'http://47.108.151.32:9501/merchant/v1/login',
       method: 'POST',
-      data: {
+      data: { 
         account: this.data.account,
         password: this.data.password,
       },
