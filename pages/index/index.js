@@ -403,9 +403,12 @@ Page({
                     eventId: 'ZFDZ',
                     number: r.amount,
                     success: (r) => {
-                      // my.showToast({ content: '语音播放结束' })
+
                     }
                   });
+                  // setTimeout(() => {
+                  //   that.upOrder(res.data.result.pay_order_id);
+                  // }, 1000);
                 } else {
                   my.showLoading();
                   setTimeout(() => {
