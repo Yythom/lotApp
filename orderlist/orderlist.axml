@@ -7,7 +7,7 @@
       <button type="ghost" onTap="backIndex">回到首页</button>
       <button type="ghost" onTap="init" style="margin-right:20px;">重置刷新</button>
     </view>
-    <!-- <view class="order-item order-bottom">
+    <view class="order-item order-bottom">
       <view class="order-amount">
         <view class="order-pay-title">
          本日交易金额
@@ -32,7 +32,7 @@
           <text>¥</text>{{headerData.yesterday_money}}
         </view>
       </view>
-    </view> -->
+    </view>
     <view class="order-item order-bottom">
       <view class="order-amount">
         <view class="order-pay-title">

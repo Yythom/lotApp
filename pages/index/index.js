@@ -416,11 +416,13 @@ Page({
                   }, 1000);
                 }
               } else {
+                my.showLoading();
                 my.showToast({ content: '收款失败 ' + res.data.msg });
               }
             },
             fail: function (res) {
               // my.alert({ content: 'fail' });
+              my.showLoading();
               my.showToast({ content: '收款失败 ' + res.data });
             },
           });
