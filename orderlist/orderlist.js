@@ -219,6 +219,7 @@ Page({
     this.getList({ pay_order_id: value });
   },
   init() {
+    this.setLocal('token');
     this.setData({
       page: 1,
       total: 0,
@@ -226,6 +227,7 @@ Page({
       endTime: '',
       date: '',
       value: '',
+      flag: false,
     })
     this.getList();
     this.getTotalData();
