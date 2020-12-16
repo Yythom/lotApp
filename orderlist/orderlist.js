@@ -67,7 +67,7 @@ Page({
     let that = this;
     let { token, page, pageSize, shop_id } = this.data
     my.request({
-      url: 'http://47.108.151.32:9501/merchant/v1/shop/shop/together/code',
+      url: 'https://pre.fishcashier.com/merchant/v1/shop/shop/together/code',
       headers: { 'content-type': 'application/json', 'token': `${token}` },
       method: 'POST',
       dataType: 'json',
@@ -114,7 +114,7 @@ Page({
     let that = this;
     let { token, page, pageSize, total, shop_id } = that.data
     my.request({
-      url: 'http://47.108.151.32:9501/merchant/v1/shop/shop/together/list',
+      url: 'https://pre.fishcashier.com/merchant/v1/shop/shop/together/list',
       headers: { 'content-type': 'application/json', 'token': `${token}` },
       method: 'POST',
       dataType: 'json',
@@ -221,6 +221,7 @@ Page({
     this.getList({ pay_order_id: value });
   },
   init() {
+    this.setLocal('token');
     this.setData({
       page: 1,
       total: 0,
@@ -228,6 +229,7 @@ Page({
       endTime: '',
       date: '',
       value: '',
+      flag: false,
     })
     this.getList();
     this.getTotalData();
@@ -306,7 +308,7 @@ Page({
       });
     }
     my.request({
-      url: 'http://47.108.151.32:9501/merchant/v1/login/refreshToken',
+      url: 'https://pre.fishcashier.com/merchant/v1/login/refreshToken',
       headers: {
         'content-type': 'application/json'
       },

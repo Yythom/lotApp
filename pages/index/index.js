@@ -61,6 +61,55 @@ Page({
       { text: '确认' }, { text: '关闭' }
     ],
   },
+  upOrder(order_id) {
+    let that = this;
+    let count = 1;
+    function aFn() {
+      my.showLoading()
+      setTimeout(() => {
+        my.request({
+          url: 'https://pre.fishcashier.com/merchant/v1/pay/search',
+          headers: {
+            'content-type': 'application/json',
+          },
+          method: 'POST',
+          timeout: 10000,
+          dataType: 'json',
+          data: {
+            shop_id: that.data.shop_id,
+            order_id: order_id,
+          },
+          success: (res) => {
+            my.hideLoading();
+            if (res.data.code == '0') {
+              console.log('up order', res.data.result);
+              if (res.data.result.status == 4 || res.data.result.status == 1 || res.data.result.status == 4) {
+                setTimeout(() => {
+                  my.showToast({ content: res.data.result.status_message });
+                }, 200);
+              } else {
+                count++;
+                if (count < 30) {
+                  aFn(count);
+                } else {
+                  my.showToast({ content: '收款失败 ' + res.data.msg });
+                }
+              }
+            } else {
+              count++;
+              if (count < 30) {
+                aFn(count);
+              } else {
+                my.showToast({ content: '收款失败 ' + res.data.msg });
+              }
+            }
+          },
+        });
+        console.log(count+'s');
+      }, 1000);
+    }
+    aFn(count)
+  },
   outLogin() {
     my.clearStorageSync();
     my.redirectTo({
@@ -85,7 +134,7 @@ Page({
     let that = this
     // 页面加载完成
     my.request({
-      url: 'http://47.108.151.32:9501/merchant/v1/shop/account/detail',
+      url: 'https://api.fishcashier.com/merchant/v1/shop/account/detail',
       headers: {
         'content-type': 'application/json',
         'token': `${that.data.token}`
@@ -144,37 +193,39 @@ Page({
       my.showToast({ content: storage.message });
     }
   },
-  upOrder(order_id) {
-    let that = this;
-    my.request({
-      url: 'http://47.108.151.32:9501/merchant/v1/pay/search',
-      headers: {
-        'content-type': 'application/json',
-      },
-      method: 'POST',
-      timeout: 10000,
-      dataType: 'json',
-      data: {
-        shop_id: that.data.shop_id,
-        order_id
-      },
-      success: (res) => {
-        my.hideLoading();
-        if (res.data.code == '0') {
-          console.log('up order', res.data.result);
-          setTimeout(() => {
-            my.showToast({ content: res.data.result.status_message });
-          }, 200);
-        } else {
-          my.showToast({ content: '收款失败 ' + res.data.msg });
-        }
-      },
-    });
-  },
+  // upOrder(order_id) {
+  //   let that = this;
+
+  //   my.request({
+  //     url: 'https://api.fishcashier.com/merchant/v1/pay/search',
+  //     headers: {
+  //       'content-type': 'application/json',
+  //     },
+  //     method: 'POST',
+  //     timeout: 10000,
+  //     dataType: 'json',
+  //     data: {
+  //       shop_id: that.data.shop_id,
+  //       order_id
+  //     },
+  //     success: (res) => {
+  //       my.hideLoading();
+  //       if (res.data.code == '0') {
+  //         console.log('up order', res.data.result);
+  //         setTimeout(() => {
+  //           my.showToast({ content: res.data.result.status_message });
+  //         }, 200);
+  //       } else {
+  //         my.showToast({ content: '收款失败 ' + res.data.msg });
+  //       }
+  //     },
+  //   });
+
+  // },
   getBanner() {
     let that = this;
     my.request({
-      url: 'http://47.108.151.32:9501/merchant/v1/shop/banner',
+      url: 'https://api.fishcashier.com/merchant/v1/shop/banner',
       headers: {
         'content-type': 'application/json',
         'token': `${that.data.token}`
@@ -223,7 +274,7 @@ Page({
       });
     }
     my.request({
-      url: 'http://47.108.151.32:9501/merchant/v1/login/refreshToken',
+      url: 'https://api.fishcashier.com/merchant/v1/login/refreshToken',
       headers: {
         'content-type': 'application/json'
       },
@@ -276,7 +327,7 @@ Page({
     this.getAccount();
     this.setData({
       init: true
-    })
+    });
   },
   onShow() {
     // 页面显示
@@ -379,7 +430,7 @@ Page({
           my.showLoading();
           console.log('res,', res);
           my.request({
-            url: 'http://47.108.151.32:9501/merchant/v1/pay/face',
+            url: 'https://api.fishcashier.com/merchant/v1/pay/face',
             method: 'POST',
             data: {
               price: r.amount,
@@ -403,14 +454,17 @@ Page({
                     eventId: 'ZFDZ',
                     number: r.amount,
                     success: (r) => {
-                      // my.showToast({ content: '语音播放结束' })
+
                     }
                   });
+                  // setTimeout(() => {
+                  //   that.upOrder(res.data.result.pay_order_id);
+                  // }, 1000);
                 } else {
                   my.showLoading();
                   setTimeout(() => {
                     that.upOrder(res.data.result.pay_order_id);
-                  }, 1000);
+                  }, 200);
                 }
               } else {
                 my.showLoading();
