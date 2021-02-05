@@ -83,7 +83,7 @@ Page({
             my.hideLoading();
             if (res.data.code == '0') {
               console.log('up order', res.data.result);
-              if (res.data.result.status == 4 || res.data.result.status == 1 || res.data.result.status == 4) {
+              if (res.data.result.status == 3 || res.data.result.status == 1 || res.data.result.status == 4) {
                 setTimeout(() => {
                   my.showToast({ content: res.data.result.status_message });
                 }, 200);
