@@ -1,7 +1,8 @@
 <view class="login_wrap">
   <view class="logo_box">
     <view class="logo">
-      <image mode="scaleToFill" src="../assets/logo.png"/>
+      <image class="welcome"  src="../assets/welcome.png"/>
+      <image mode="scaleToFill" src="../assets/logo.svg"/>
     </view>
     <view class="title">
     <!-- 海美刷脸 -->

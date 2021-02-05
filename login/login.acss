@@ -41,7 +41,17 @@
 .logo_box .logo image {
   width: 130px;
   height: 130px;
-  margin-bottom: 6px
+  margin-bottom: 6px;
+}
+.logo_box .logo  {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.welcome{
+  width: 122px !important;
+  height: 36px !important;
 }
 .logo_box{
   display: flex;
