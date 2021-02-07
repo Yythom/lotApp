@@ -13,25 +13,25 @@ Page({
     headerData: {},
     flag: false,
   },
-  scrollTo() {
+  scrollTo() { // 搜索展开自动定位
     this.setData({
       flag: !this.data.flag
     })
     if (!this.data.flag) {
       setTimeout(() => {
-        my.pageScrollTo({
+        my.pageScrollTo({ // 页面滚动到底部 scroll-view限制了高 故9999
           scrollTop: 9999,
           duration: 400,
         });
       }, 300);
     } else {
-      my.pageScrollTo({
+      my.pageScrollTo({ // 页面滚动到顶部
         scrollTop: 10,
         duration: 400,
       });
     }
   },
-  backIndex() {
+  backIndex() { // 回到首页
     my.redirectTo({
       url: '/pages/index/index'
     })
@@ -48,7 +48,7 @@ Page({
       this.init();
     }
   },
-  setLocal(key) { // 获取本地存储
+  setLocal(key) { // 获取本地存储 设置到当前页面的state
     let that = this;
     let obj = { ...that.data }
     const storage = my.getStorageSync({ key });
@@ -61,7 +61,7 @@ Page({
       my.showToast({ content: storage.message });
     }
   },
-  getTotalData() {
+  getTotalData() { // 获取汇总数据
     let that = this;
     let { token, page, pageSize, shop_id } = this.data
     my.request({
@@ -85,7 +85,7 @@ Page({
       }
     });
   },
-  getList(search, currentPage) { // 商品列表数据
+  getList(search, currentPage) { // 获取商品列表数据
     let date = '';
     let pay_order_id = '';
     if (search) {
@@ -127,7 +127,7 @@ Page({
       success: (res) => {
         const result = res.data;
         if (result.code == 0) {
-          if (currentPage) {
+          if (currentPage) { // 分页操作
             that.setData({
               list: [...that.data.list, ...result.result.list],
               page: currentPage,
@@ -135,6 +135,7 @@ Page({
             })
             my.hideLoading();
             my.stopPullDownRefresh();
+            // -----------
           } else {
             that.setData({
               list: result.result.list,
@@ -159,7 +160,7 @@ Page({
       },
     });
   },
-  getOrderDetail(order_id) {
+  getOrderDetail(order_id) { // 获取点击的订单id并跳转到 订单详情页
     my.showLoading();
     my.setStorage({
       key: 'order_id',
@@ -181,14 +182,14 @@ Page({
     that.getList();
     that.getTotalData();
   },
-  lower() {
+  lower() { // scroll-view到底触发事件
     this.getList('', this.data.page + 1)
   },
-  goDetail(event) {
+  goDetail(event) { // 获取列表点击的订单id
     let { order_id } = event.currentTarget.dataset;
     this.getOrderDetail(order_id);
   },
-  handleInput(value) {
+  handleInput(value) { // 订单号搜索储值
     if (!value.length) {
       if (this.data.token) {
         console.log('搜索刷新');
@@ -199,16 +200,16 @@ Page({
       value,
     });
   },
-  handleClear() {
+  handleClear() { // 清楚搜索框
     this.setData({
       value: '',
     });
   },
-  handleSubmit() {
+  handleSubmit() { // 订单号 搜索框搜索 
     const reg = /\s+/g;
     const numberReg = /^\d+$/;
     let value = this.data.value.replace(reg, '');
-    if (!value) {
+    if (!value) { // 如果搜索值为空则初始化list
       this.init();
       return
     }
@@ -218,7 +219,7 @@ Page({
     }
     this.getList({ pay_order_id: value });
   },
-  init() {
+  init() { // 设置当前页面的一些基本数据
     this.setLocal('token');
     this.setData({
       page: 1,
@@ -232,7 +233,7 @@ Page({
     this.getList();
     this.getTotalData();
   },
-  datePicker1() {
+  datePicker1() { // 选择开始日期
     function formatDate() {
       var date = new Date();
       var YY = date.getFullYear() + '-';
@@ -257,7 +258,7 @@ Page({
       },
     });
   },
-  datePicker2() {
+  datePicker2() { // 选择结束日期
     const that = this;
     function formatDate() {
       var date = new Date();
@@ -281,7 +282,7 @@ Page({
       },
     });
   },
-  dateSearch() {
+  dateSearch() { // 日期搜索
     if (!this.data.startTime) {
       my.showToast({ content: '开始时间不能为空' });
       return;
@@ -354,7 +355,7 @@ Page({
       },
     });
   },
-  copy(e) {
+  copy(e) { // 复制订单号
     let orderId = e.currentTarget.dataset.key;
     my.setClipboard({
       text: orderId,

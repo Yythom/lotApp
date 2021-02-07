@@ -61,7 +61,7 @@ Page({
       { text: '确认' }, { text: '关闭' }
     ],
   },
-  upOrder(order_id) {
+  upOrder(order_id) { // 订单状态查询
     let that = this;
     let count = 1;
     function aFn() {
@@ -105,18 +105,18 @@ Page({
             }
           },
         });
-        console.log(count+'s');
+        console.log(count + 's');
       }, 1000);
     }
     aFn(count)
   },
-  outLogin() {
+  outLogin() { // 退出登入
     my.clearStorageSync();
     my.redirectTo({
       url: '/login/login'
     })
   },
-  footBotton(e) {
+  footBotton(e) { // modal底部按钮的点击事件
     let that = this;
     let text = e.currentTarget.dataset.item.text;
     if (text === '确认') {
@@ -130,7 +130,7 @@ Page({
       that.onMaskClick();
     }
   },
-  getAccount() {
+  getAccount() { // 获取账号信息
     let that = this
     // 页面加载完成
     my.request({
@@ -170,17 +170,17 @@ Page({
       },
     });
   },
-  onMaskClick() {
+  onMaskClick() { // 退出登入modal的开关事件
     this.setData({
       modalOpened: !this.data.modalOpened,
     })
   },
-  order_router() {
+  order_router() { // 前往订单列表
     my.navigateTo({
       url: '/orderlist/orderlist'
     });
   },
-  setLocal(key) { // 获取本地存储
+  setLocal(key) { // 获取本地存储 并设置到当前页数据
     let that = this;
     let obj = { ...that.data }
     const storage = my.getStorageSync({ key });
@@ -193,36 +193,7 @@ Page({
       my.showToast({ content: storage.message });
     }
   },
-  // upOrder(order_id) {
-  //   let that = this;
-
-  //   my.request({
-  //     url: 'https://api.fishcashier.com/merchant/v1/pay/search',
-  //     headers: {
-  //       'content-type': 'application/json',
-  //     },
-  //     method: 'POST',
-  //     timeout: 10000,
-  //     dataType: 'json',
-  //     data: {
-  //       shop_id: that.data.shop_id,
-  //       order_id
-  //     },
-  //     success: (res) => {
-  //       my.hideLoading();
-  //       if (res.data.code == '0') {
-  //         console.log('up order', res.data.result);
-  //         setTimeout(() => {
-  //           my.showToast({ content: res.data.result.status_message });
-  //         }, 200);
-  //       } else {
-  //         my.showToast({ content: '收款失败 ' + res.data.msg });
-  //       }
-  //     },
-  //   });
-
-  // },
-  getBanner() {
+  getBanner() { // 获取首页大图轮播
     let that = this;
     my.request({
       url: 'https://api.fishcashier.com/merchant/v1/shop/banner',
@@ -262,7 +233,7 @@ Page({
       },
     });
   },
-  refreshToken() {
+  refreshToken() { // 利用本地refreshToken刷新token
     let refreshToken = '';
     let that = this;
     const storage = my.getStorageSync({ key: 'refreshToken' });
@@ -288,13 +259,13 @@ Page({
         console.log(res, 'refreshToken');
         if (res.data.code == 0) {
           let result = res.data;
-          my.setStorage({
+          my.setStorage({ // 更新本地token
             key: 'token',
             data: {
               token: result.result.token,
             }
           });
-          my.setStorage({
+          my.setStorage({ // 更新本地refreshToken
             key: 'refreshToken',
             data: {
               refreshToken: result.result.refreshToken
@@ -379,19 +350,6 @@ Page({
       }
     });
   },
-  onUnload() {
-
-    // 页面被关闭
-  },
-  onTitleClick() {
-    // 标题被点击
-  },
-  onPullDownRefresh() {
-    // 页面被下拉
-  },
-  onReachBottom() {
-    // 页面被拉到底部
-  },
   onShareAppMessage() {
     // 返回自定义分享信息
     return {
@@ -414,7 +372,7 @@ Page({
     });
   },
 
-  startListenKeyboardEvent() {
+  startListenKeyboardEvent() { // 键盘板监听事件
     let that = this;
     my.ix.onKeyEventChange((r) => {
       if (r.keyCode === 131) {
@@ -457,9 +415,6 @@ Page({
 
                     }
                   });
-                  // setTimeout(() => {
-                  //   that.upOrder(res.data.result.pay_order_id);
-                  // }, 1000);
                 } else {
                   my.showLoading();
                   setTimeout(() => {
@@ -730,5 +685,18 @@ Page({
       shownCode: '',
       image: '',
     })
-  }
+  },
+  onUnload() {
+
+    // 页面被关闭
+  },
+  onTitleClick() {
+    // 标题被点击
+  },
+  onPullDownRefresh() {
+    // 页面被下拉
+  },
+  onReachBottom() {
+    // 页面被拉到底部
+  },
 });

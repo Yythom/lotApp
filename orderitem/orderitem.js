@@ -21,7 +21,7 @@ Page({
       this.getOrderDetail(this.data.order_id);
     }
   },
-  setLocal(key) { // 获取本地存储
+  setLocal(key) { // 获取本地存储 设置到当前页面state
     let that = this;
     let obj = { ...that.data }
     const storage = my.getStorageSync({ key });
@@ -40,7 +40,7 @@ Page({
     this.setLocal('account')
     this.getOrderDetail(this.data.order_id);
   },
-  refundApi(price) {
+  refundApi(price) { // 退款 Api
     let that = this;
     let { token } = this.data;
     console.log(price);
@@ -77,7 +77,7 @@ Page({
       },
     });
   },
-  searchRefund() {
+  searchRefund() { // 退款状态查询
     let that = this;
     let { token } = this.data;
     that.setData({
@@ -125,7 +125,7 @@ Page({
       },
     });
   },
-  fullRefund() {
+  fullRefund() { // 全部退款
     let i = 0;
     let that = this;
     this.refundApi();
@@ -143,7 +143,7 @@ Page({
       timer,
     })
   },
-  partRefund(price) {
+  partRefund(price) { // 部分退款
     let that = this;
     if (this.data.moeny > this.data.order.price) {
       my.showToast({ content: '金额最大值为' + that.data.order.price });
@@ -276,7 +276,7 @@ Page({
       moeny: ''
     })
   },
-  footBotton(e) {
+  footBotton(e) { // 部分退款modal底部
     let that = this;
     let text = e.currentTarget.dataset.item.text;
     if (text === '确认') {
@@ -295,7 +295,7 @@ Page({
       that.onMaskClick();
     }
   },
-  footBottonAll(e) {
+  footBottonAll(e) { // 全部退款modal底部
     let that = this;
     let text = e.currentTarget.dataset.item.text;
     if (text === '确认') {
@@ -307,13 +307,13 @@ Page({
       that.onMaskClickAll();
     }
   },
-  inputFn(e) {
+  inputFn(e) { // 部分退款输入金额
     let value = e.detail.value;
     this.setData({
       moeny: value
     })
   },
-  copy(e) {
+  copy(e) { // 复制编号
     let orderId = e.currentTarget.dataset.key;
     my.setClipboard({
       text: orderId,
