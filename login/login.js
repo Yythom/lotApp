@@ -27,7 +27,7 @@ Page({
       return
     }
     my.request({
-      url: 'https://api.fishcashier.com/merchant/v1/login',
+      url: 'https://api.integral.haimeiyx.com/merchant/v1/login',
       method: 'POST',
       data: {
         account: this.data.account,

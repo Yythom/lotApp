@@ -68,7 +68,7 @@ Page({
       my.showLoading()
       setTimeout(() => {
         my.request({
-          url: 'https://api.fishcashier.com/merchant/v1/pay/search',
+          url: 'https://api.integral.haimeiyx.com/merchant/v1/pay/search',
           headers: {
             'content-type': 'application/json',
           },
@@ -134,7 +134,7 @@ Page({
     let that = this
     // 页面加载完成
     my.request({
-      url: 'https://api.fishcashier.com/merchant/v1/shop/account/detail',
+      url: 'https://api.integral.haimeiyx.com/merchant/v1/shop/account/detail',
       headers: {
         'content-type': 'application/json',
         'token': `${that.data.token}`
@@ -196,7 +196,7 @@ Page({
   getBanner() { // 获取首页大图轮播
     let that = this;
     my.request({
-      url: 'https://api.fishcashier.com/merchant/v1/shop/banner',
+      url: 'https://api.integral.haimeiyx.com/merchant/v1/shop/banner',
       headers: {
         'content-type': 'application/json',
         'token': `${that.data.token}`
@@ -245,7 +245,7 @@ Page({
       });
     }
     my.request({
-      url: 'https://api.fishcashier.com/merchant/v1/login/refreshToken',
+      url: 'https://api.integral.haimeiyx.com/merchant/v1/login/refreshToken',
       headers: {
         'content-type': 'application/json'
       },
@@ -388,7 +388,7 @@ Page({
           my.showLoading();
           console.log('res,', res);
           my.request({
-            url: 'https://api.fishcashier.com/merchant/v1/pay/face',
+            url: 'https://api.integral.haimeiyx.com/merchant/v1/pay/face',
             method: 'POST',
             data: {
               price: r.amount,

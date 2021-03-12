@@ -65,7 +65,7 @@ Page({
     let that = this;
     let { token, page, pageSize, shop_id } = this.data
     my.request({
-      url: 'https://api.fishcashier.com/merchant/v1/shop/shop/together/code',
+      url: 'https://api.integral.haimeiyx.com/merchant/v1/shop/shop/together/code',
       headers: { 'content-type': 'application/json', 'token': `${token}` },
       method: 'POST',
       dataType: 'json',
@@ -112,7 +112,7 @@ Page({
     let that = this;
     let { token, page, pageSize, total, shop_id } = that.data
     my.request({
-      url: 'https://api.fishcashier.com/merchant/v1/shop/shop/together/list',
+      url: 'https://api.integral.haimeiyx.com/merchant/v1/shop/shop/together/list',
       headers: { 'content-type': 'application/json', 'token': `${token}` },
       method: 'POST',
       dataType: 'json',
@@ -143,6 +143,9 @@ Page({
             })
             my.hideLoading();
             my.stopPullDownRefresh();
+          }
+          if (!result.result.list[0]) {
+            my.showToast({ content: '暂无数据' });
           }
         } else {
           if (result.msg !== '请重新登录') {
@@ -307,7 +310,7 @@ Page({
       });
     }
     my.request({
-      url: 'https://api.fishcashier.com/merchant/v1/login/refreshToken',
+      url: 'https://api.integral.haimeiyx.com/merchant/v1/login/refreshToken',
       headers: {
         'content-type': 'application/json'
       },
